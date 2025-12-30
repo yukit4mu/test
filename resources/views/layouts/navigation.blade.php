@@ -22,7 +22,7 @@
                     <x-nav-link :href="route('favorites.index')" :active="request()->routeIs('favorites.index')">
                         {{ __('お気に入り') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('ranking')" :active="request()->routeIs('ranking')">
+                    <x-nav-link :href="route('ranking.index')" :active="request()->routeIs('ranking.index')">
                         {{ __('ランキング') }}
                     </x-nav-link>
                     @endauth
@@ -88,7 +88,7 @@
             <x-responsive-nav-link :href="route('favorites.index')" :active="request()->routeIs('favorites.index')">
                 {{ __('お気に入り') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('ranking')" :active="request()->routeIs('ranking')">
+            <x-responsive-nav-link :href="route('ranking.index')" :active="request()->routeIs('ranking.index')">
                 {{ __('ランキング') }}
             </x-responsive-nav-link>
             @endauth
