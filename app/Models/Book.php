@@ -38,4 +38,13 @@ class Book extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    protected $casts = [
+        'published_date' => 'date',
+    ];
 }

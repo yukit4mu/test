@@ -30,4 +30,9 @@ class Review extends Model
     {
         return $this->belongsToMany(User::class, 'review_likes');
     }
+
+    public function likes()
+    {
+        return $this->hasMany(ReviewLike::class);
+    }
 }

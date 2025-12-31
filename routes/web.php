@@ -41,6 +41,12 @@ Route::middleware('auth')->group(function () {
     // Review Like management
     Route::post('/reviews/{review}/like', [ReviewLikeController::class, 'store'])->name('likes.store');
     Route::delete('/reviews/{review}/unlike', [ReviewLikeController::class, 'destroy'])->name('likes.destroy');
+
+    // Google Books API
+    Route::get('/api/books/fetch', [BookController::class, 'fetch'])->name('books.fetch');
+
+    // CSV Export
+    Route::get('/export/csv', [BookController::class, 'exportCsv'])->name('books.export.csv');
 });
 
 // Public book show route
