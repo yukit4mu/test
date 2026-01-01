@@ -1,5 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">書籍一覧</x-slot>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('書籍一覧') }}
+        </h2>
+    </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -20,7 +24,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @if($books->isEmpty())
-                        <p>書籍が登録されていません。</p>
+                        <p class="text-gray-500">書籍が登録されていません。</p>
                     @else
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             @foreach($books as $book)
@@ -41,6 +45,22 @@
                                             <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded">{{ $genre->name }}</span>
                                         @endforeach
                                     </div>
+                                    @if($book->reviews_avg_rating)
+                                        <div class="flex items-center">
+                                            <span class="text-yellow-500">
+                                                @for($i = 1; $i <= 5; $i++)
+                                                    @if($i <= round($book->reviews_avg_rating))
+                                                        ★
+                                                    @else
+                                                        ☆
+                                                    @endif
+                                                @endfor
+                                            </span>
+                                            <span class="text-sm text-gray-500 ml-2">
+                                                ({{ number_format($book->reviews_avg_rating, 1) }})
+                                            </span>
+                                        </div>
+                                    @endif
                                 </a>
                             @endforeach
                         </div>
